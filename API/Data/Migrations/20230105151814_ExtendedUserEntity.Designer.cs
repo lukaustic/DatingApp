@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230105151814_ExtendedUserEntity")]
+    partial class ExtendedUserEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
@@ -24,9 +26,11 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Created")
@@ -36,30 +40,38 @@ namespace API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Interests")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Introduction")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("KnownAs")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("LastActive")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LookingFor")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("BLOB");
 
                     b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
                         .HasColumnType("BLOB");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -80,10 +92,11 @@ namespace API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PublicId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Url")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Url")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
